@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0
+        }
+        
+        body{
+            overflow: hidden;
+        }
+        div {
+            position: absolute;
+            right: 100%;
+            width: 100px;
+            height: 100px;
+            background: royalblue;
+            opacity: 1;
+            transition: all 4s;
+        }
+
+        .red {
+            top: 150px;
+            background: red;
+            transition: all 4s 0.1s;
+        }
+
+        .green {
+            top: 300px;
+            background: green;
+            transition: all 4s 0.2s;
+        }
+
+        .yellow {
+            top: 450px;
+            background: yellow;
+            transition: all 4s 0.3s;
+        }
+
+        button {
+            display: block;
+            width: 100px;
+            height: 40px;
+            margin: 200px auto;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bule"></div>
+    <div class="red"></div>
+    <div class="green"></div>
+    <div class="yellow"></div>
+
+    <!-- <button>开始</button> -->
+    <script>
+        var slideX = 0;
+        var div = document.getElementsByTagName('div');
+        var count = [0,0,0,0]
+        for (let i = 0; i < div.length; i++) {
+            setInterval(function () {
+                div[i].style.right = '-100px';
+                div[i].style.transform = 'rotate(360deg)';
+                setTimeout(() => {
+                    div[i].style.right = " 100%";
+                    div[i].style.transform = 'rotate(0deg)';
+                    count[i] += 1;
+                    console.log('第'+(i+1)+'块的圈数为'+ count[i]+'  时间:'+ new Date().toLocaleTimeString())
+                }, 4000+i*100);
+            }, 8000+i*200)
+        }
+
+    </script>
+</body>
+
+</html>
