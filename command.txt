@@ -27,6 +27,12 @@ ssh-keygen -t rsa -C "youremail@example.com"  查看本地的ssh
 git remote add origin <github上创建的目录的ssh>  远程连接库和本地库
 git push -u origin master 将本地的文件全部上传到远程仓库中
 之后可以直接用git push 上传文件
+git branch 查看当前分支
+git branch	<branch_name> 创建名为branch_name的分支
+git checkout <branch_name> 切换到名为branch_name的分支
+git checkout -b <branch_name> 创建并切换当前分支
+git merge <branch_name> 将branch_name分支的内容合并到master的分支上
+git branch -d <branch_name>  删除分支
 
 
 查看GitHub上的html文件 加上前缀http://htmlpreviem.github.io/?
