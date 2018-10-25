@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正方体</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-style: preserve-3d;
+            /* animation: rotate 10s infinite 0.5s; */
+            margin-left: -50px;
+            margin-top: -50px;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate3d(0, 0, 0)
+            }
+
+            /* 30% {
+                transform: rotate3d(-45deg,0deg,0deg)
+            }
+
+            60% {
+                transform: rotateX(-90deg) rotateY(0deg)
+            } */
+
+            100% {
+                transform: rotateX(360deg) rotateY(360deg)
+            }
+
+        }
+
+        li {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        .li1 {
+            background: red;
+            transform: translateZ(100px);
+
+        }
+
+        .li2 {
+            background: greenyellow;
+            transform: translate3d(50px, 0, 50px) rotateY(90deg);
+        }
+
+        .li3 {
+            background: burlywood;
+        }
+
+        .li4 {
+            background: blueviolet;
+            transform: rotateX(90deg) translate3d(0px, 50px, 50px)
+        }
+
+        .li5 {
+            background: orangered;
+            transform: translate3d(-50px, 0, 50px) rotateY(-90deg);
+        }
+
+        .li6 {
+            background: indianred;
+            transform: rotateX(-90deg) translate3d(0px, -50px, 50px);
+
+        }
+
+        /* 掷塞子 */
+        .throw {
+            animation: throw 2s ease;
+        }
+
+        @keyframes throw {
+            0% {
+                transform: rotateX(450deg) rotateY(450deg) translate3d(100px,100px, 0)
+            }
+
+
+            100% {
+                transform: rotateX(0deg) rotateY(0deg) translate3d(0, 0, 0)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li class="li1"></li>
+        <li class="li2"></li>
+        <li class="li3"></li>
+        <li class="li4"></li>
+        <li class="li5"></li>
+        <li class="li6"></li>
+    </ul>
+    <script>
+        var color = ["red", "orange", "green", "purple", "pink", "blue"] //  自己定义的LI的颜色
+        var number = [1, 2, 3, 4, 5, 6];
+        var ul = document.getElementsByTagName('ul')[0];
+        var li = document.getElementsByTagName('li');
+        var key = true;
+        function throwPlug() {
+            color.sort(function () {
+                return Math.random() - 0.5
+            });
+            number.sort(function () {
+                return Math.random() - 0.5
+            });
+        }
+        ul.onclick = function () {
+            if (key) {
+                key = false
+                throwPlug();
+                ul.classList.add('throw');
+                for (var i = 0; i < color.length; i++) {
+                    li[i].innerHTML = number[i];
+                    li[i].style.background = color[i];
+                }
+                setTimeout(function () {
+                    ul.classList.remove('throw');
+                    key = true;
+                }, 2000)
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
